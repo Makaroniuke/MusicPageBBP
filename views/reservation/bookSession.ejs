@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+
+<div id="dates" data-dates="<%= JSON.stringify(lessons) %>">
+    <% if(currentUser && currentUser.role == 'Producer'){ %>
+        <a id="articleSubmit" href="/allClasses">Check all booked classes</a>
+    <% } %>
+    <br/>
+<h2 >Book a lesson now</h2>
+
+<div>
+    <p>
+        Book a lesson right now and learn from professionals. All classes start at 7 p.m. Let us know your experience 
+        and preferences
+    </p>
+</div>
+<br/>
+
+<a id="articleSubmit" href="/bookedClasses">Check booked classes</a>
+<br/>
+<br/>
+
+
+<div class="row">
+    <div class="col-6 ">
+        <div class="form-group">
+        <label for="date">Date:</label>
+        <input required name="date" id="date" placeholder="Select Date..." class=date />
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label for="preferences">Preferences/Experience (optional):</label>
+            <textarea name="preferences" class="form-control" id="preferences" rows="5"></textarea>
+          </div>
+    </div>
+</div>
+<br/>
+<button id="articleSubmit" class="checkout">Submit</button>
+
+</div>
+<br/>
+<br/>
+
+<script src="/scripts/reservation.js"></script>

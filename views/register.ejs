@@ -1,0 +1,97 @@
+
+
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/homeStyle.css">
+<style>
+  nav, footer{
+    visibility: hidden;
+    height: 0px;
+    }
+    .overlay{
+        height: 550px;
+    }
+
+</style>
+
+
+
+<body  data-lang="en" >
+    <div class="container">
+       
+
+    <h2 class="text-uppercase text-center mb-4">Create an account</h2>
+    <section>
+    <div style="position: relative;">
+        <div class="row" >
+            <div class="col-md" style="display: flex; justify-content:flex-end; align-items:end;">
+                <img style="
+                 width: 95%; height:95%" src="/images/Untitled6.jpg" alt="">
+            </div>
+            <div class="col-md" style="position:relative" >
+                <img style="position:absolute; bottom:0; width: 85%; height: 85%; float: left;" src="/images/photo14607232374837a6dc9d0b212.jpg" alt="">
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="row">
+            <div class="col-md">
+                <img style="width: 85%; height: 85%; float: right;" src="images/953eab26afa3c9a923782213851ef5a898ec500ec9bcfd78bb9a4ec4308f0a1685aee29be363bb041ea889bb4457d8d30ee5ab4c65cc75f5df1f29_1280.jpg
+                "alt="">
+            </div>
+            <div class="col-md">
+                <img style=" width: 95%; height: 95%" src="images/xa.jpg" alt="">
+            </div>
+        </div>
+        <div class="overlay">
+            <div class="centerItems">
+                
+              <form method="POST" class="needs-validation" novalidate>
+
+                <div class="form-outline mb-4">
+                  <input required type="text" id="form3Example1cg" name="username" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">Username</label>
+                                
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input required type="email" id="email" name="email" class="form-control form-control-lg" />
+                  <label class="form-label" for="email">Email</label>
+                </div>
+
+                <div class="form-outline form-group mb-4">
+                 
+                  <input required oninvalid="alert('Password must be min 8 symbols')" minlength="8" type="password" id="password" name="password" class="form-control form-control-lg" />
+                  <label class="form-label" for="password">Password</label>
+                   </div>
+                
+                <!-- <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cdg">Repeat the password</label>
+                </div> -->
+                <div class="d-flex justify-content-center" >
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" >Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>         
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+</div>
+
+<section>
+<div style="margin-top: 100px;">
+</div>
+</section>
+    
+
+<script src="/scripts/validateForms.js"></script>
+</body>
+</html>
+
+

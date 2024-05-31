@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container " >
+<form action="/blog/<%= blog.id %>/edit?_method=PUT" method="post" class="needs-validation" novalidate>
+
+    <div class="form-outline mb-4">
+      <input maxlength="50" value="<%= blog.topic %>" required  type="text" id="topic" name="topic" class="form-control form-control-lg" />
+      <label class="form-label" for="topic">Topic</label> 
+    </div>
+    <div class="form-outline mb-4">
+        <select required name="type" class="form-control form-control-lg">
+            <option selected value="">Not Selected</option>
+            <option value="Fundamentals">Fundamentals</option>
+            <option value="Sound design">Sound design</option>
+            <option value="Mixing">Mixing</option>
+            <option value="Mastering">Mastering</option>
+            <option value="Other">Other</option>
+        </select>
+        <label class="form-label" for="type">Sample Type</label> 
+    </div>
+    <div >
+    </br>
+        <textarea required id="summernote" name="article"><%= blog.article %></textarea>
+    </div>
+    <button id="articleSubmit" style="margin-top: 50px;">Submit The Article</button>
+</form>
+    <script src="/scripts/blogTextarea.js"></script>
+</div>
+
+<script src="/scripts/validateForms.js"></script>

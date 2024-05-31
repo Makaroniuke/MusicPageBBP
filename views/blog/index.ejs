@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container" >
+    <form action="/blog" method="get">
+        <label class="form-label" for="type">Type</label> 
+<div class="row">
+   <div class="col-3"> 
+    <select name="type" class="form-control">
+        <option value="All">All</option>
+        <option value="Fundamentals">Fundamentals</option>
+        <option value="Sound design">Sound design</option>
+        <option value="Mixing">Mixing</option>
+        <option value="Mastering">Mastering</option>
+        <option value="Other">Other</option>
+    </select>
+   </div>
+   <div class="col">
+    <button type="submit" class="btn">Filter</button>
+   </div>
+   <div class="col">
+    <% if(currentUser && currentUser.role == "Producer") {%>
+        <a  href="/blog/new" id="articleSubmit">Create New Article</a>
+    <% } %>
+   </div>
+</div>
+
+<div style="padding-top:50px; display: flex; flex-wrap:wrap;">
+    <br><br>
+    <% for(let blog of blogs){ %>
+        <div class="articlePost" >
+            <img src="<%= blog.imageUrl %>" alt="" style="height: 150px; width:250px;">
+
+                <h4><%= blog.topic %></h4>
+                <p>#<%= blog.type %></p>
+                <p>By <%= blog.author.username %></p> 
+                <p><%= blog.date.toLocaleDateString() %></p>
+                <div>              
+                    <a style=" float:none" href="/blog/<%= blog.id %>" id="articleSubmit">Read More</a>
+                </div>
+            </div>
+    <% } %>
+</div>
+</div>

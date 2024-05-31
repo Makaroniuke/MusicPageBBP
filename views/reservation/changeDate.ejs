@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+
+<div id="dates" data-dates="<%= JSON.stringify(lessons) %>">
+<h2 >Choose date</h2>
+
+<form id="myForm" method="POST" action="/changeDate/<%= lesson._id %>/edit?_method=PUT" class="needs-validation" novalidate>
+<div class="row">
+    <div class="col-6 ">
+        <div class="form-group">
+        <label for="date">Date:</label>
+        <input required name="date" id="date" placeholder="Select Date..." class=date />
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<button>Submit</button>
+
+</form>
+
+</div>
+
+<script src="/scripts/changeDate.js"></script>

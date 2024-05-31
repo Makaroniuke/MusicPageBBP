@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container">
+
+    <div id="waveform-data" data-waveforms="<%= JSON.stringify(track) %>"></div>
+    <div>
+        <p><b>Track name:</b> <%= track.name %></p>
+        <p></p>
+        <p><b>Description:</b></p>
+        <p> <%= track.description %></p>
+        <div style="display: flex; align-items:center; margin-top:15px; margin-bottom: 30px">
+            <img style="  height: 50px;
+                        width: 50px;
+                        filter: grayscale(100%);
+                        margin-right: 10px;
+                    
+                    "  id="play" src="/images/play.png">
+            <div id="waveform"></div>
+        </div>
+    </div>
+    <div>
+        <p><%- track.feedback.review %></p>
+    </div>
+
+  
+    <script src="/scripts/blogTextarea.js"></script>
+    <script src="/scripts/feedbackWaveform.js"></script>
+
+   
+</div>

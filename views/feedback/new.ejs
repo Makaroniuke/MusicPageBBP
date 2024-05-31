@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  footer{
+    visibility: hidden;
+  }
+</style>
+
+
+<div class="container ">
+
+    <div id="waveform-data" data-waveforms="<%= JSON.stringify(track) %>"></div>
+    <div>
+        <p><b>Track name:</b> <%= track.name %></p>
+        <p>By <a href="/profile/<%= track.author.id %>"><%= track.author.username %></a></p>
+        <p></p>
+        <p><b>Description:</b></p>
+        <p> <%= track.description %></p>
+        <div style="display: flex; align-items:center; margin-top:15px; margin-bottom: 30px">
+            <img style="  height: 50px;
+                        width: 50px;
+                        filter: grayscale(100%);
+                        margin-right: 10px;
+                        
+                    "  id="play" src="/images/play.png">
+            <div id="waveform"></div>
+        </div>
+    </div>
+
+    <form method="post" id="myForm">
+        <div>
+            <label for="review">Leave a review:</label>
+            <textarea id="summernote" name="review"></textarea>
+            
+        </div>
+        <button id="articleSubmit">Submit</button>
+    </form>
+
+    
+    <script src="/scripts/blogTextarea.js"></script>
+    <script src="/scripts/feedbackWaveform.js"></script>
+</div>

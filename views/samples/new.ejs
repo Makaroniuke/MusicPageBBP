@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container">
+    <!-- <div class="u-align-center u-black u-container-style u-group u-opacity u-opacity-90 u-group-1" style="margin-top: -400px"> -->
+        <div class="u-container-layout u-container-layout-5" >
+          <form  method="post"  enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div required class="form-outline mb-4">
+              <input maxlength="30"  required  type="text" id="sampleName" name="sampleName" class="form-control form-control-lg" />
+              <label class="form-label" for="sampleName">Sample Name</label> 
+              <div class="invalid-tooltip">
+                Please provide a valid city.
+              </div>
+        
+            </div>
+
+            <div class="form-outline mb-4">
+              <select required name="type" class="form-control form-control-lg">
+                <option selected value="">Not Selected</option>
+                <option value="Drums">Drums</option>
+                <option value="Synth">Synth</option>
+                <option value="Vocal">Vocal</option>
+                <option value="Instrument">Instrument</option>
+                <option value="Other">Other</option>
+              </select>
+              <label class="form-label" for="type">Sample Type</label> 
+            </div>
+
+            <div class="form-outline mb-4">
+              <input maxlength="10" type="text" id="key" name="key" class="form-control form-control-lg" />
+              <label class="form-label" for="key">Sample Key</label>
+          </div>
+
+            <div class="form-outline mb-4">
+                <input required type="file" id="sample" name="sample" class="form-control form-control-lg" accept="audio/mp3, audio/wav"  />
+                <label class="form-label" for="sample">Sample</label>
+            </div>
+
+            <div class="d-flex justify-content-center" >
+              <button type="submit"
+                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" >Upload</button>
+            </div>
+          </form>                      
+        </div>
+      </div>
+
+</div>
+<script src="/scripts/validateForms.js"></script>
+
+<script>
+  
+var sample = document.getElementById("sample");
+
+sample.onchange = function() {
+    if(this.files[0].size > 60200000){
+       alert("File is too big!");
+       this.value = "";
+    };
+};
+</script>

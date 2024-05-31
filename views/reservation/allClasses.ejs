@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+
+<div>
+    <table class="table" style="width: 100%">
+        <tr>
+          <th>User</th>
+          <th >Date</th>
+          <th >Time</th>
+          <th >Preferences/Experience</th>
+          <th>Status</th>
+          <th>Change date</th>
+          <th>Cannot attend? Cancel</th>
+          <th>Give feedback</th>
+        </tr>
+            <% for (let i = 0; i < lessons.length; i++){ %>
+               <% if(new Date().toISOString().substring(0, 10) <= new Date(lessons[i].date).toISOString().substring(0, 10)) {%>
+                <tr>
+                    <td><a href="/profile/<%= lessons[i].author._id %>"><%=lessons[i].author.username %></a></td>
+                    <td> <%= new Date(lessons[i].date).toISOString().substring(0, 10)  %></td>
+                <td>19.00</td>
+                <td> <%= lessons[i].preferences %></td>             
+                
+                <td id="status"><%= lessons[i].status %></td>
+                <td><a href="/changeDate/<%= lessons[i]._id %>/edit">Change date</a></td>
+                
+                    <td>
+                <form method="POST" action="/lesson/<%= lessons[i]._id %>?_method=PUT ">
+                    <button class="noback">    
+                        Cancel
+                </button>
+                </form>
+            </td>
+            <% if(!lessons[i].feedbackTrack){ %>
+                <td>
+                    <p>No track</p>
+                </td>
+                <% }else if(lessons[i].feedbackTrack.feedback){ %>
+                <td>
+                    <p>Feedback uploaded</p>
+                </td>
+                <% }else{ %>
+                    <td>
+                        <a href="/feedback/new/<%= lessons[i].feedbackTrack._id %>" id="">Give feedback</a>
+                    </td>
+                    <% } %>              
+            </tr>
+            <% } %>
+
+            <% } %>
+</div>
+
+<script src="/scripts/colorStatus.js"></script>

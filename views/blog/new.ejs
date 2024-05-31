@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  footer{
+    visibility: hidden;
+  }
+</style>
+
+
+<div class="container " style="
+background-color: white;
+margin-top: 40px;
+padding-top:30px;
+padding-left:100px;
+padding-right:100px;
+margin-bottom: 100px;
+border-radius:15px;
+">
+
+    <form id="myForm" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div>
+            <input accept="image/png, image/jpeg" required type="file" id="image" name="image" class="form-control form-control-lg" >
+            <label for="image">Select Cover Image</label>
+        </div>
+        <div class="form-outline mb-4">
+          <input required maxlength="50" type="text" id="topic" name="topic" class="form-control form-control-lg" />
+          <label class="form-label" for="topic">Topic</label> 
+        </div>
+        <div class="form-outline mb-4">
+          <select required name="type" class="form-control form-control-lg">
+            <option selected value="">Not Selected</option>
+            <option value="Fundamentals">Fundamentals</option>
+            <option value="Sound design">Sound design</option>
+            <option value="Mixing">Mixing</option>
+            <option value="Mastering">Mastering</option>
+            <option value="Other">Other</option>
+          </select>
+          <label class="form-label" for="type">Sample Type</label> 
+        </div>
+        <div >
+        </br>
+            <textarea required id="summernote" name="article"></textarea>
+        </div>
+        <button id="articleSubmit">Submit The Article</button>
+    </form>
+
+    <script src="/scripts/blogTextarea.js"></script>
+</div>
+<script src="/scripts/validateForms.js"></script>
+
+<script>
+  var image = document.getElementById("image");
+  
+  image.onchange = function() {
+      if(this.files[0].size > 60200000){
+         alert("File is too big!");
+         this.value = "";
+      };
+  };
+  </script>

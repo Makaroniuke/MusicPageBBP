@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate') %>
+
+<div>
+    <table class="table" style="width: 100%">
+        <tr>
+          <th >Date</th>
+          <th >Time</th>
+          <th >Preferences/Experience</th>
+          <th>Status</th>
+          <th>Change date</th>
+          <th>Cannot attend? Cancel</th>
+          <th>Add track for feedback</th>
+        </tr>
+            <% for (let i = 0; i < lessons.length; i++){ %>
+                <tr>
+                    <td> <%= new Date(lessons[i].date).toISOString().substring(0, 10)  %></td>
+                <td>19.00</td>
+                <td> <%= lessons[i].preferences %></td>
+                    
+
+                <td id="status"><%= lessons[i].status %></td>
+                <% if((new Date().toISOString().substring(0, 10) >= new Date(lessons[i].date).toISOString().substring(0, 10) && ( lessons[i].status === 'Canceled'))|| new Date().toISOString().substring(0, 10) <= new Date(lessons[i].date).toISOString().substring(0, 10)) {%>
+
+                <td><a href="/changeDate/<%= lessons[i]._id %>/edit">Change date</a></td>
+                <% }else{ %>
+                    <td></td>
+                <% } %>
+                    <td>
+                        <% if((new Date().toISOString().substring(0, 10) >= new Date(lessons[i].date).toISOString().substring(0, 10) && ( lessons[i].status === 'Canceled'))|| new Date().toISOString().substring(0, 10) <= new Date(lessons[i].date).toISOString().substring(0, 10)) {%>
+                <form method="POST" action="/lesson/<%= lessons[i]._id %>?_method=PUT ">
+                    <button class="noback">    
+                        Cancel
+                </button>
+                </form>
+                <% }else{ %>
+                    
+                    <% } %>
+            </td>
+            <% if(!lessons[i].feedbackTrack){ %>
+            <td>
+                <a href="/feedback/uploadTrack/<%= lessons[i]._id %>">Upload track</a>
+            </td>
+            <% }else if(!lessons[i].feedbackTrack.feedback){ %>
+            <td>
+                <p>Waiting</p>
+            </td>
+            <% }else{ %>
+                <td>
+                    <a href="/feedback/details/<%= lessons[i].feedbackTrack._id %>" id="">Check feedback</a>
+                </td>
+                <% } %>
+            </tr>
+            <% } %>
+
+            
+</div>
+
+<script src="/scripts/colorStatus.js"></script>
